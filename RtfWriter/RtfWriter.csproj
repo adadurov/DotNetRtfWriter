@@ -8,7 +8,7 @@
     <ProjectGuid>{591BCEB5-6B6F-4368-BE6C-F89F668F7DCB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Elistia.DotNetRtfWriter</RootNamespace>
+    <RootNamespace>HooverUnlimited.DotNetRtfWriter</RootNamespace>
     <AssemblyName>DotNetRtfWriter</AssemblyName>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
