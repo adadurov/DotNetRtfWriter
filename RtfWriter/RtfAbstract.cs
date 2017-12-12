@@ -1,7 +1,4 @@
-using System;
-using System.Configuration;
-
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
     /// Internal use only.
@@ -14,7 +11,7 @@ namespace Elistia.DotNetRtfWriter
         /// Emit RTF code.
         /// </summary>
         /// <returns>RTF code</returns>
-        abstract public string render();
+        abstract public string Render();
     }
 
     /// <summary>

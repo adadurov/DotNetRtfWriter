@@ -1,11 +1,9 @@
 using System;
-using System.Configuration;
 using System.Text;
-using System.Drawing;
 using System.IO;
 using Image = System.Drawing.Image;
 
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
     /// Summary description for RtfImage
@@ -169,7 +167,7 @@ namespace Elistia.DotNetRtfWriter
             }
         }
 
-        private string extractImage()
+        private string ExtractImage()
         {
             StringBuilder result = new StringBuilder();
 
@@ -201,7 +199,7 @@ namespace Elistia.DotNetRtfWriter
             }
         }
 
-        public override string render()
+        public override string Render()
         {
             StringBuilder result = new StringBuilder(_blockHead);
 
@@ -210,16 +208,16 @@ namespace Elistia.DotNetRtfWriter
             }
 
             if (_margins[Direction.Top] >= 0) {
-                result.Append(@"\sb" + RtfUtility.pt2Twip(_margins[Direction.Top]));
+                result.Append(@"\sb" + RtfUtility.Pt2Twip(_margins[Direction.Top]));
             }
             if (_margins[Direction.Bottom] >= 0) {
-                result.Append(@"\sa" + RtfUtility.pt2Twip(_margins[Direction.Bottom]));
+                result.Append(@"\sa" + RtfUtility.Pt2Twip(_margins[Direction.Bottom]));
             }
             if (_margins[Direction.Left] >= 0) {
-                result.Append(@"\li" + RtfUtility.pt2Twip(_margins[Direction.Left]));
+                result.Append(@"\li" + RtfUtility.Pt2Twip(_margins[Direction.Left]));
             }
             if (_margins[Direction.Right] >= 0) {
-                result.Append(@"\ri" + RtfUtility.pt2Twip(_margins[Direction.Right]));
+                result.Append(@"\ri" + RtfUtility.Pt2Twip(_margins[Direction.Right]));
             }
             switch (_alignment) {
                 case Align.Left:
@@ -243,14 +241,14 @@ namespace Elistia.DotNetRtfWriter
                 throw new Exception("Image type not supported.");
             }
             if (_height > 0) {
-                result.Append(@"\pichgoal" + RtfUtility.pt2Twip(_height));
+                result.Append(@"\pichgoal" + RtfUtility.Pt2Twip(_height));
             }
             if (_width > 0) {
-                result.Append(@"\picwgoal" + RtfUtility.pt2Twip(_width));
+                result.Append(@"\picwgoal" + RtfUtility.Pt2Twip(_width));
             }
             result.AppendLine();
             
-            result.AppendLine(extractImage());
+            result.AppendLine(ExtractImage());
             result.AppendLine("}}");
             if (_startNewPara) result.Append(@"\par");
             result.AppendLine(_blockTail);

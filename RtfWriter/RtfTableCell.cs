@@ -1,8 +1,6 @@
-using System;
-using System.Configuration;
 using System.Text;
 
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
     /// Summary description for RtfTableCell
@@ -142,15 +140,15 @@ namespace Elistia.DotNetRtfWriter
 
         public float OuterLeftBorderClearance { get; set; }
 
-        public void setBorderColor(ColorDescriptor color)
+        public void SetBorderColor(ColorDescriptor color)
         {
-            this.Borders[Direction.Top].Color = color;
-            this.Borders[Direction.Bottom].Color = color;
-            this.Borders[Direction.Left].Color = color;
-            this.Borders[Direction.Right].Color = color;
+            Borders[Direction.Top].Color = color;
+            Borders[Direction.Bottom].Color = color;
+            Borders[Direction.Left].Color = color;
+            Borders[Direction.Right].Color = color;
         }
 
-        public override string render()
+        public override string Render()
         {
             StringBuilder result = new StringBuilder();
             string align = "";
@@ -174,13 +172,13 @@ namespace Elistia.DotNetRtfWriter
             }
             
 
-            if (base._blocks.Count <= 0) {
+            if (_blocks.Count <= 0) {
                 result.AppendLine(@"\pard\intbl");
             } else {
-                for (int i = 0; i < base._blocks.Count; i++) {
-                    RtfBlock block = (RtfBlock) base._blocks[i];
+                for (int i = 0; i < _blocks.Count; i++) {
+                    RtfBlock block = _blocks[i];
                     if (_defaultCharFormat != null && block.DefaultCharFormat != null) {
-                        block.DefaultCharFormat.copyFrom(_defaultCharFormat);
+                        block.DefaultCharFormat.CopyFrom(_defaultCharFormat);
                     }
                     if (block.Margins[Direction.Top] < 0) {
                         block.Margins[Direction.Top] = 0;
@@ -200,7 +198,7 @@ namespace Elistia.DotNetRtfWriter
                         block.BlockHead = @"\par" + align;
                     }
                     block.BlockTail = "";
-                    result.AppendLine(block.render());
+                    result.AppendLine(block.Render());
                 }
             }
             

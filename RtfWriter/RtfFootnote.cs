@@ -1,10 +1,7 @@
 using System;
-using System.Configuration;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
     /// Summary description for RtfFootnote
@@ -31,14 +28,14 @@ namespace Elistia.DotNetRtfWriter
             }
         }
         
-        public override string render()
+        public override string Render()
         {
             StringBuilder result = new StringBuilder();
 
             result.AppendLine(@"{\super\chftn}");
             result.AppendLine(@"{\footnote\plain\chftn");
             ((RtfBlock)base._blocks[base._blocks.Count - 1]).BlockTail = "}";
-            result.Append(base.render());
+            result.Append(base.Render());
             result.AppendLine("}");
             return result.ToString();
         }

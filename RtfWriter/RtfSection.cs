@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     public class RtfSection : RtfBlock
     {
@@ -55,7 +55,7 @@ namespace Elistia.DotNetRtfWriter
 
         private RtfDocument ParentDocument { get; set; }
 
-        public override string render()
+        public override string Render()
         {
             StringBuilder result = new StringBuilder();
             if (StartEnd == SectionStartEnd.Start)
@@ -66,14 +66,14 @@ namespace Elistia.DotNetRtfWriter
                     result.Append(@"\lndscpsxn ");
                 }
                 result.Append(string.Format(@"\pgwsxn{0}\pghsxn{1} ",PageWidth, PageHeight));
-                if (!ParentDocument.Margins.Equals(Margins))
+                if (!ParentDocument.Margins.Equals((object)Margins))
                 {
                     result.Append(string.Format(@"\marglsxn{0}\margrsxn{1}\margtsxn{2}\margbsxn{3} ",
                                                 Margins[Direction.Left], Margins[Direction.Right], Margins[Direction.Top], Margins[Direction.Bottom]));
                 }
                 if( SectionFooter != null )
                 {
-                    result.AppendLine( SectionFooter.render() );
+                    result.AppendLine( SectionFooter.Render() );
                 }
             }
             else

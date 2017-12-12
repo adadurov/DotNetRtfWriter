@@ -1,10 +1,8 @@
 using System;
-using System.Configuration;
 using System.Collections;
 using System.Text;
-using System.Collections.Generic;
 
-namespace Elistia.DotNetRtfWriter
+namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
     /// Summary description for RtfHeaderFooter
@@ -21,7 +19,7 @@ namespace Elistia.DotNetRtfWriter
             _type = type;
         }
 
-        public override string render()
+        public override string Render()
         {
             StringBuilder result = new StringBuilder();
 
@@ -36,9 +34,9 @@ namespace Elistia.DotNetRtfWriter
             for (int i = 0; i < base._blocks.Count; i++) {
                 if (base._defaultCharFormat != null
                     && ((RtfBlock)base._blocks[i]).DefaultCharFormat != null) {
-                    ((RtfBlock)base._blocks[i]).DefaultCharFormat.copyFrom(base._defaultCharFormat);
+                    ((RtfBlock)base._blocks[i]).DefaultCharFormat.CopyFrom(base._defaultCharFormat);
                 }
-                result.AppendLine(((RtfBlock)_blocks[i]).render());
+                result.AppendLine(((RtfBlock)_blocks[i]).Render());
             }
             result.AppendLine("}");
             return result.ToString();
