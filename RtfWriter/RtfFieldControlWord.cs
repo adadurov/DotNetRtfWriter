@@ -8,10 +8,11 @@ namespace HooverUnlimited.DotNetRtfWriter
             Page,
             NumPages,
             Date,
-            Time,
+            Time
         }
-        
-        private static string[] ControlWordPool = new string[] {
+
+        private static readonly string[] ControlWordPool =
+        {
             // correspond with FiledControlWords enum
             "",
             @"{\field{\*\fldinst PAGE }}",
@@ -19,26 +20,20 @@ namespace HooverUnlimited.DotNetRtfWriter
             @"{\field{\*\fldinst DATE }}",
             @"{\field{\*\fldinst TIME }}"
         };
-        
-        private int _position;
-        private FieldType _type;
-        
+
+        private readonly FieldType _type;
+
         internal RtfFieldControlWord(int position, FieldType type)
         {
-            _position = position;
+            Position = position;
             _type = type;
         }
-        
-        internal int Position
-        {
-            get {
-                return _position;
-            }
-        }
-        
+
+        internal int Position { get; }
+
         public override string Render()
         {
-            return ControlWordPool[(int)_type];
+            return ControlWordPool[(int) _type];
         }
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
 using HooverUnlimited.DotNetRtfWriter;
 
@@ -119,7 +116,7 @@ namespace Debugging
 
 
             // ==========================================================================
-            // demo 6: ªí®æ
+            // demo 6: ï¿½ï¿½ï¿½
             // ==========================================================================
             // Please be careful when dealing with tables, as most crashes come from them.
             // If you follow steps below, the resulting RTF is not likely to crash your
@@ -139,11 +136,8 @@ namespace Debugging
 
             // Step 3. (Optional) Set text alignment for each cell, row height, column width,
             //			border style, etc.
-            for (var i = 0; i < table.RowCount; i++) {
-                for(var j = 0; j < table.ColCount; j++) {
-                    table.Cell(i, j).AddParagraph().SetText("CELL " + i.ToString() + "," + j.ToString());
-                }
-            }
+            for (var i = 0; i < table.RowCount; i++)
+            for (var j = 0; j < table.ColCount; j++) table.Cell(i, j).AddParagraph().SetText("CELL " + i + "," + j);
 
             // Step 4. Merge cells so that the resulting table would look like the one you drew
             //			on paper. One cell cannot be merged twice. In this way, we can construct
@@ -161,7 +155,7 @@ namespace Debugging
             // This format is provisioned for Far East languages. This demo uses Traditional
             // Chinese as an example.
             par = doc.AddParagraph();
-            par.SetText("Demo7: aaa¨Ã±Æ¤å¦raaa");
+            par.SetText("Demo7: aaaï¿½Ã±Æ¤ï¿½raaa");
             fmt = par.AddCharFormat(10, 13);
             fmt.TwoInOneStyle = TwoInOneStyle.Braces;
             fmt.FontSize = 16;

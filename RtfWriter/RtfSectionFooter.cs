@@ -8,15 +8,13 @@ namespace HooverUnlimited.DotNetRtfWriter
         internal RtfSectionFooter(RtfSection parent)
             : base(true, true, true, true, true)
         {
-            if(parent == null)
-            {
+            if (parent == null)
                 throw new Exception("Section footer can only be placed within a section ");
-            }
         }
 
         public override string Render()
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             result.AppendLine(@"{\footerr \ltrpar \pard\plain");
             result.AppendLine(@"\par ");

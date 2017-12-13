@@ -1,56 +1,61 @@
 namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
-    /// Internal use only.
-    /// Objects that are renderable can emit RTF code.
+    ///     Internal use only.
+    ///     Objects that are renderable can emit RTF code.
     /// </summary>
-    abstract public class RtfRenderable
+    public abstract class RtfRenderable
     {
         /// <summary>
-        /// Internal use only.
-        /// Emit RTF code.
+        ///     Internal use only.
+        ///     Emit RTF code.
         /// </summary>
         /// <returns>RTF code</returns>
-        abstract public string Render();
+        public abstract string Render();
     }
 
     /// <summary>
-    /// Internal use only.
-    /// RtfBlock is a content block that cannot contain other blocks.
-    /// For example, an image is an RtfBlock because it cannot contain
-    /// other content block such as another image, a paragraph, a table,
-    /// etc.
+    ///     Internal use only.
+    ///     RtfBlock is a content block that cannot contain other blocks.
+    ///     For example, an image is an RtfBlock because it cannot contain
+    ///     other content block such as another image, a paragraph, a table,
+    ///     etc.
     /// </summary>
-    abstract public class RtfBlock : RtfRenderable
+    public abstract class RtfBlock : RtfRenderable
     {
         /// <summary>
-        /// How this block is aligned in its containing block.
+        ///     How this block is aligned in its containing block.
         /// </summary>
-        abstract public Align Alignment { get; set; }
+        public abstract Align Alignment { get; set; }
+
         /// <summary>
-        /// By what distance this block is separated from others in
-        /// the containing block.
+        ///     By what distance this block is separated from others in
+        ///     the containing block.
         /// </summary>
-        abstract public Margins Margins { get; }
+        public abstract Margins Margins { get; }
+
         /// <summary>
-        /// Default character formats.
+        ///     Default character formats.
         /// </summary>
-        abstract public RtfCharFormat DefaultCharFormat { get; }
+        public abstract RtfCharFormat DefaultCharFormat { get; }
+
         /// <summary>
-        /// When set to true, this block will be arranged in the beginning
-        /// of a new page.
+        ///     When set to true, this block will be arranged in the beginning
+        ///     of a new page.
         /// </summary>
-        abstract public bool StartNewPage { get; set; }
+        public abstract bool StartNewPage { get; set; }
+
         /// <summary>
-        /// Internal use only.
-        /// Beginning RTF control words for this block.
+        ///     Internal use only.
+        ///     Beginning RTF control words for this block.
         /// </summary>
-        abstract internal string BlockHead { set; }
+        internal abstract string BlockHead { set; }
+
         /// <summary>
-        /// Internal use only.
-        /// Ending RTF control word for this block.
+        ///     Internal use only.
+        ///     Ending RTF control word for this block.
         /// </summary>
-        abstract internal string BlockTail { set; }
+        internal abstract string BlockTail { set; }
 
         protected string AlignmentCode()
         {

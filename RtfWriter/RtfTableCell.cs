@@ -3,40 +3,30 @@ using System.Text;
 namespace HooverUnlimited.DotNetRtfWriter
 {
     /// <summary>
-    /// Summary description for RtfTableCell
+    ///     Summary description for RtfTableCell
     /// </summary>
     public class RtfTableCell : RtfBlockList
     {
-        private float _width;
-        private Align _halign;
-        private AlignVertical _valign;
-        private Borders _borders;
-        private CellMergeInfo _mergeInfo;
-        private int _rowIndex;
-        private int _colIndex;
-        
         internal RtfTableCell(float width, int rowIndex, int colIndex, RtfTable parentTable)
             : base(true, false)
         {
-            _width = width;
-            _halign = Align.None;
-            _valign = AlignVertical.Top;
-            _borders = new Borders();
-            _mergeInfo = null;
-            _rowIndex = rowIndex;
-            _colIndex = colIndex;
+            Width = width;
+            Alignment = Align.None;
+            AlignmentVertical = AlignVertical.Top;
+            Borders = new Borders();
+            MergeInfo = null;
+            RowIndex = rowIndex;
+            ColIndex = colIndex;
             BackgroundColour = null;
             ParentTable = parentTable;
         }
-        
+
         internal bool IsBeginOfColSpan
         {
             get
             {
-                if (_mergeInfo == null) {
-                    return false;
-                }
-                return (_mergeInfo.ColIndex == 0);
+                if (MergeInfo == null) return false;
+                return MergeInfo.ColIndex == 0;
             }
         }
 
@@ -44,10 +34,8 @@ namespace HooverUnlimited.DotNetRtfWriter
         {
             get
             {
-                if (_mergeInfo == null) {
-                    return false;
-                }
-                return (_mergeInfo.RowIndex == 0);
+                if (MergeInfo == null) return false;
+                return MergeInfo.RowIndex == 0;
             }
         }
 
@@ -55,88 +43,28 @@ namespace HooverUnlimited.DotNetRtfWriter
         {
             get
             {
-                if (_mergeInfo == null) {
-                    return false;
-                }
+                if (MergeInfo == null) return false;
                 return true;
             }
         }
 
-        internal CellMergeInfo MergeInfo
-        {
-            get
-            {
-                return _mergeInfo;
-            }
-            set
-            {
-                _mergeInfo = value;
-            }
-        }
+        internal CellMergeInfo MergeInfo { get; set; }
 
-        public float Width
-        {
-            get
-            {
-                return _width;
-            }
-            set
-            {
-                _width = value;
-            }
-        }
+        public float Width { get; set; }
 
-        public Borders Borders
-        {
-            get
-            {
-                return _borders;
-            }
-        }
+        public Borders Borders { get; }
 
-        public RtfTable ParentTable { get; private set; }
+        public RtfTable ParentTable { get; }
 
         public ColorDescriptor BackgroundColour { get; set; }
 
-        public Align Alignment
-        {
-            get
-            {
-                return _halign;
-            }
-            set
-            {
-                _halign = value;
-            }
-        }
-        
-        public AlignVertical AlignmentVertical
-        {
-            get
-            {
-                return _valign;
-            }
-            set
-            {
-                _valign = value;
-            }
-        }
-        
-        public int RowIndex
-        {
-            get
-            {
-                return _rowIndex;
-            }
-        }
-        
-        public int ColIndex
-        {
-            get
-            {
-                return _colIndex;
-            }
-        }
+        public Align Alignment { get; set; }
+
+        public AlignVertical AlignmentVertical { get; set; }
+
+        public int RowIndex { get; }
+
+        public int ColIndex { get; }
 
         public float OuterLeftBorderClearance { get; set; }
 
@@ -150,10 +78,11 @@ namespace HooverUnlimited.DotNetRtfWriter
 
         public override string Render()
         {
-            StringBuilder result = new StringBuilder();
-            string align = "";
-            
-            switch (_halign) {
+            var result = new StringBuilder();
+            var align = "";
+
+            switch (Alignment)
+            {
                 case Align.Left:
                     align = @"\ql";
                     break;
@@ -170,38 +99,25 @@ namespace HooverUnlimited.DotNetRtfWriter
                     align = @"\qd";
                     break;
             }
-            
 
-            if (_blocks.Count <= 0) {
-                result.AppendLine(@"\pard\intbl");
-            } else {
-                for (int i = 0; i < _blocks.Count; i++) {
-                    RtfBlock block = _blocks[i];
-                    if (_defaultCharFormat != null && block.DefaultCharFormat != null) {
+
+            if (_blocks.Count <= 0) result.AppendLine(@"\pard\intbl");
+            else
+                for (var i = 0; i < _blocks.Count; i++)
+                {
+                    var block = _blocks[i];
+                    if (_defaultCharFormat != null && block.DefaultCharFormat != null)
                         block.DefaultCharFormat.CopyFrom(_defaultCharFormat);
-                    }
-                    if (block.Margins[Direction.Top] < 0) {
-                        block.Margins[Direction.Top] = 0;
-                    }
-                    if (block.Margins[Direction.Right] < 0) {
-                        block.Margins[Direction.Right] = 0;
-                    }
-                    if (block.Margins[Direction.Bottom] < 0) {
-                        block.Margins[Direction.Bottom] = 0;
-                    }
-                    if (block.Margins[Direction.Left] < 0) {
-                        block.Margins[Direction.Left] = 0;
-                    }
-                    if (i == 0) {
-                        block.BlockHead = @"\pard\intbl" + align;
-                    } else {
-                        block.BlockHead = @"\par" + align;
-                    }
+                    if (block.Margins[Direction.Top] < 0) block.Margins[Direction.Top] = 0;
+                    if (block.Margins[Direction.Right] < 0) block.Margins[Direction.Right] = 0;
+                    if (block.Margins[Direction.Bottom] < 0) block.Margins[Direction.Bottom] = 0;
+                    if (block.Margins[Direction.Left] < 0) block.Margins[Direction.Left] = 0;
+                    if (i == 0) block.BlockHead = @"\pard\intbl" + align;
+                    else block.BlockHead = @"\par" + align;
                     block.BlockTail = "";
                     result.AppendLine(block.Render());
                 }
-            }
-            
+
             result.AppendLine(@"\cell");
             return result.ToString();
         }
