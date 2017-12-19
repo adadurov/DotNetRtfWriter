@@ -102,15 +102,9 @@ namespace HooverUnlimited.DotNetRtfWriter
 
         public RtfTable AddTable(int rowCount, int colCount, float fontSize)
         {
-            float horizontalWidth;
-
-            if (_orientation == PaperOrientation.Portrait)
-                horizontalWidth = RtfUtility.PaperWidthInPt(_paper, _orientation)
-                                  - Margins[Direction.Left] - Margins[Direction.Right];
-            else
-                horizontalWidth = RtfUtility.PaperHeightInPt(_paper, _orientation)
-                                  - Margins[Direction.Left] - Margins[Direction.Right];
-            return base.AddTable(rowCount, colCount, horizontalWidth, fontSize);
+            var horizontalWidth = RtfUtility.PaperWidthInPt(_paper, _orientation)
+                                    - Margins[Direction.Left] - Margins[Direction.Right]; 
+            return AddTable(rowCount, colCount, horizontalWidth, fontSize);
         }
 
         public override string Render()

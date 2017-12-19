@@ -5,3 +5,7 @@
 /RtfWriter/bin/
 /RtfWriter/obj/
 /.vs/
+/RtfWriter/NugetPack.bat
+/RtfWriter/NugetPush.bat
+
+*.nupkg
