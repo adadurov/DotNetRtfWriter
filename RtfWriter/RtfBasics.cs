@@ -469,9 +469,9 @@ namespace HooverUnlimited.DotNetRtfWriter
         }
 
         /// <summary>
-        ///     Constructor that initializes using System Drawing colour
+        ///     Constructor that initializes using System Drawing color
         /// </summary>
-        /// <param name="color">System Drawing Colour</param>
+        /// <param name="color">System Drawing Color</param>
         public RtfColor(Color color)
         {
             _color = (color.R << 16) + (color.G << 8) + color.B;

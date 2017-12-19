@@ -17,9 +17,9 @@ namespace Debugging
             var red = doc.CreateColor(new RtfColor("ff0000"));
             var blue = doc.CreateColor(new RtfColor(0, 0, 255));
             var white = doc.CreateColor(new RtfColor(255, 255, 255));
-            var colourTableHeader = doc.CreateColor(new RtfColor("76923C"));
-            var colourTableRow = doc.CreateColor(new RtfColor("D6E3BC"));
-            var colourTableRowAlt = doc.CreateColor(new RtfColor("FFFFFF"));
+            var colorTableHeader = doc.CreateColor(new RtfColor("76923C"));
+            var colorTableRow = doc.CreateColor(new RtfColor("D6E3BC"));
+            var colorTableRowAlt = doc.CreateColor(new RtfColor("FFFFFF"));
 
             // Don't instantiate RtfTable, RtfParagraph, and RtfImage objects by using
             // ``new'' keyword. Instead, use add* method in objects derived from
@@ -129,9 +129,9 @@ namespace Debugging
             table.SetInnerBorder(BorderStyle.Dotted, 1f);
             table.SetOuterBorder(BorderStyle.Single, 2f);
 
-            table.HeaderBackgroundColour = colourTableHeader;
-            table.RowBackgroundColour = colourTableRow;
-            table.RowAltBackgroundColour = colourTableRowAlt;
+            table.HeaderBackgroundColor = colorTableHeader;
+            table.RowBackgroundColor = colorTableRow;
+            table.RowAltBackgroundColor = colorTableRowAlt;
 
 
             // Step 3. (Optional) Set text alignment for each cell, row height, column width,
@@ -145,7 +145,7 @@ namespace Debugging
             table.Merge(1, 0, 3, 1);
             // Step 5. You may start inserting content for each cell. Actually, it is adviced
             //			that the only thing you do after merging cell is inserting content.
-            table.Cell(4, 3).BackgroundColour = red;
+            table.Cell(4, 3).BackgroundColor = red;
             table.Cell(4, 3).AddParagraph().SetText("Demo6: Table");
 
 

@@ -33,9 +33,9 @@ namespace HooverUnlimited.DotNetRtfWriter
             CellPadding = new Margins[RowCount];
             if (RowCount < 1 || ColCount < 1) throw new Exception("The number of rows or columns is less than 1.");
 
-            HeaderBackgroundColour = null;
-            RowBackgroundColour = null;
-            RowAltBackgroundColour = null;
+            HeaderBackgroundColor = null;
+            RowBackgroundColor = null;
+            RowAltBackgroundColor = null;
 
             // Set cell default width according to paper width
             _defaultCellWidth = horizontalWidth / colCount;
@@ -52,9 +52,9 @@ namespace HooverUnlimited.DotNetRtfWriter
             }
         }
 
-        public ColorDescriptor HeaderBackgroundColour { get; set; }
-        public ColorDescriptor RowBackgroundColour { get; set; }
-        public ColorDescriptor RowAltBackgroundColour { get; set; }
+        public ColorDescriptor HeaderBackgroundColor { get; set; }
+        public ColorDescriptor RowBackgroundColor { get; set; }
+        public ColorDescriptor RowAltBackgroundColor { get; set; }
 
         public override Align Alignment
         {
@@ -224,7 +224,7 @@ namespace HooverUnlimited.DotNetRtfWriter
         }
 
         /// <summary>
-        ///     Set ALL inner borders (colour will be set to default)
+        ///     Set ALL inner borders (color will be set to default)
         /// </summary>
         /// <param name="style"></param>
         /// <param name="width"></param>
@@ -294,7 +294,7 @@ namespace HooverUnlimited.DotNetRtfWriter
         }
 
         /// <summary>
-        ///     Set ALL outer borders (colour will be set to default)
+        ///     Set ALL outer borders (color will be set to default)
         /// </summary>
         /// <param name="style"></param>
         /// <param name="width"></param>
@@ -480,20 +480,18 @@ namespace HooverUnlimited.DotNetRtfWriter
                         }
                     }
 
-                    // Cell background colour
-                    if (Cell(i, j).BackgroundColour != null)
-                        result.Append(string.Format(@"\clcbpat{0}",
-                            Cell(i, j).BackgroundColour.Value)); // cell.BackGroundColor overrides others
-                    else if (i == 0 && HeaderBackgroundColour != null)
-                        result.Append(string.Format(@"\clcbpat{0}", HeaderBackgroundColour.Value)); // header
-                    else if (RowBackgroundColour != null && (RowAltBackgroundColour == null || i % 2 == 0))
-                        result.Append(string.Format(@"\clcbpat{0}", RowBackgroundColour.Value)); // row colour
-                    else if (RowBackgroundColour != null && RowAltBackgroundColour != null && i % 2 != 0)
-                        result.Append(string.Format(@"\clcbpat{0}", RowAltBackgroundColour.Value)); // alt row colour
+                    // Cell background color
+                    if (Cell(i, j).BackgroundColor != null)
+                        result.Append($@"\clcbpat{Cell(i, j).BackgroundColor.Value}"); // cell.BackGroundColor overrides others
+                    else if (i == 0 && HeaderBackgroundColor != null)
+                        result.Append($@"\clcbpat{HeaderBackgroundColor.Value}"); // header
+                    else if (RowBackgroundColor != null && (RowAltBackgroundColor == null || i % 2 == 0))
+                        result.Append($@"\clcbpat{RowBackgroundColor.Value}"); // row colour
+                    else if (RowBackgroundColor != null && RowAltBackgroundColor != null && i % 2 != 0)
+                        result.Append($@"\clcbpat{RowAltBackgroundColor.Value}"); // alt row colour
 
                     if (_cells[i][j].IsMerged && _cells[i][j].MergeInfo.RowSpan > 1)
-                        if (_cells[i][j].IsBeginOfRowSpan) result.Append(@"\clvmgf");
-                        else result.Append(@"\clvmrg");
+                        result.Append(_cells[i][j].IsBeginOfRowSpan ? @"\clvmgf" : @"\clvmrg");
                     switch (_cells[i][j].AlignmentVertical)
                     {
                         case AlignVertical.Top:

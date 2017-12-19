@@ -17,36 +17,15 @@ namespace HooverUnlimited.DotNetRtfWriter
             MergeInfo = null;
             RowIndex = rowIndex;
             ColIndex = colIndex;
-            BackgroundColour = null;
+            BackgroundColor = null;
             ParentTable = parentTable;
         }
 
-        internal bool IsBeginOfColSpan
-        {
-            get
-            {
-                if (MergeInfo == null) return false;
-                return MergeInfo.ColIndex == 0;
-            }
-        }
+        internal bool IsBeginOfColSpan => MergeInfo?.ColIndex == 0;
 
-        internal bool IsBeginOfRowSpan
-        {
-            get
-            {
-                if (MergeInfo == null) return false;
-                return MergeInfo.RowIndex == 0;
-            }
-        }
+        internal bool IsBeginOfRowSpan => MergeInfo?.RowIndex == 0;
 
-        public bool IsMerged
-        {
-            get
-            {
-                if (MergeInfo == null) return false;
-                return true;
-            }
-        }
+        public bool IsMerged => MergeInfo != null;
 
         internal CellMergeInfo MergeInfo { get; set; }
 
@@ -56,7 +35,7 @@ namespace HooverUnlimited.DotNetRtfWriter
 
         public RtfTable ParentTable { get; }
 
-        public ColorDescriptor BackgroundColour { get; set; }
+        public ColorDescriptor BackgroundColor { get; set; }
 
         public Align Alignment { get; set; }
 
