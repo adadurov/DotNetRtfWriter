@@ -20,7 +20,7 @@ namespace HooverUnlimited.DotNetRtfWriter
         private readonly bool[] _rowKeepInSamePage;
         private bool _startNewPage;
 
-        public RtfTable(int rowCount, int colCount, float horizontalWidth, float fontSize)
+        internal RtfTable(int rowCount, int colCount, float horizontalWidth, float fontSize)
         {
             _fontSize = fontSize;
             _alignment = Align.None;

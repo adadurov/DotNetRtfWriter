@@ -21,12 +21,12 @@ namespace HooverUnlimited.DotNetRtfWriter
         private readonly Margins _margins;
         private bool _startNewPage;
 
-        public RtfParagraph()
+        internal RtfParagraph()
             : this(false, false)
         {
         }
 
-        public RtfParagraph(bool allowFootnote, bool allowControlWord)
+        internal RtfParagraph(bool allowFootnote, bool allowControlWord)
         {
             Text = new StringBuilder();
             LineSpacing = -1;
