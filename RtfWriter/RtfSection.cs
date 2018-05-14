@@ -71,7 +71,7 @@ namespace HooverUnlimited.DotNetRtfWriter
                 if (PageOrientation == PaperOrientation.Landscape)
                     result.Append(@"\lndscpsxn ");
                 result.Append(string.Format(@"\pgwsxn{0}\pghsxn{1} ", PageWidth, PageHeight));
-                if (!ParentDocument.Margins.Equals((object) Margins))
+                if (!ParentDocument.Margins.Equals((object)Margins))
                     result.Append(string.Format(@"\marglsxn{0}\margrsxn{1}\margtsxn{2}\margbsxn{3} ",
                         Margins[Direction.Left], Margins[Direction.Right], Margins[Direction.Top],
                         Margins[Direction.Bottom]));

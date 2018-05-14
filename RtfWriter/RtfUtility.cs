@@ -10,7 +10,7 @@ namespace HooverUnlimited.DotNetRtfWriter
     {
         public static float Mm2Points(float mm)
         {
-            return mm * (float) 2.836;
+            return mm * (float)2.836;
         }
 
         public static int Mm2Twips(float mm)
@@ -34,11 +34,11 @@ namespace HooverUnlimited.DotNetRtfWriter
             switch (paperSize)
             {
                 case PaperSize.A4:
-                    return new[] {11906, 16838};
+                    return new[] { 11906, 16838 };
                 case PaperSize.Letter:
-                    return new[] {15840, 12240};
+                    return new[] { 15840, 12240 };
                 case PaperSize.A3:
-                    return new[] {16838, 23811};
+                    return new[] { 16838, 23811 };
                 default:
                     throw new Exception("Unknow paper size.");
             }
@@ -50,7 +50,7 @@ namespace HooverUnlimited.DotNetRtfWriter
             if (orientation == PaperOrientation.Portrait)
                 if (d[0] < d[1]) return d[0];
                 else return d[1];
-// landscape
+            // landscape
             if (d[0] < d[1]) return d[1];
             return d[0];
         }
@@ -61,7 +61,7 @@ namespace HooverUnlimited.DotNetRtfWriter
             if (orientation == PaperOrientation.Portrait)
                 if (d[0] < d[1]) return d[1];
                 else return d[0];
-// landscape
+            // landscape
             if (d[0] < d[1]) return d[0];
             return d[1];
         }
@@ -138,7 +138,7 @@ namespace HooverUnlimited.DotNetRtfWriter
                 var c = buf[i];
                 if (0x00 <= c && c < 0x20 || 0x80 <= c && c <= 0xff
                     || c == 0x5c || c == 0x7b || c == 0x7d) result += $@"\'{c:x2}";
-                else result += ascii.GetChars(new[] {c})[0];
+                else result += ascii.GetChars(new[] { c })[0];
             }
             return result;
         }

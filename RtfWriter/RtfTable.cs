@@ -142,24 +142,24 @@ namespace HooverUnlimited.DotNetRtfWriter
             if (colSpan == 1 && rowSpan == 1) return Cell(topRow, leftCol);
             // Check if the cell has been merged before.
             for (var i = 0; i < rowSpan; i++)
-            for (var j = 0; j < colSpan; j++)
-                if (_cells[topRow + i][leftCol + j].IsMerged)
-                    throw new Exception("Cannot merge cells because some of the cells has been merged.");
+                for (var j = 0; j < colSpan; j++)
+                    if (_cells[topRow + i][leftCol + j].IsMerged)
+                        throw new Exception("Cannot merge cells because some of the cells has been merged.");
 
             float width = 0;
             for (var i = 0; i < rowSpan; i++)
-            for (var j = 0; j < colSpan; j++)
-            {
-                // Sum up the column widths in the first row.
-                if (i == 0) width += _cells[topRow][leftCol + j].Width;
-                // Set merge info for each cell.
-                // Note: The representatives of all cells are set to the (topRow, leftCol) cell.
-                _cells[topRow + i][leftCol + j].MergeInfo
-                    = new CellMergeInfo(_cells[topRow][leftCol], rowSpan, colSpan, i, j);
-                if (i != 0 || j != 0)
-                    _cells[topRow + i][leftCol + j].TransferBlocksTo(
-                        _cells[topRow + i][leftCol + j].MergeInfo.Representative);
-            }
+                for (var j = 0; j < colSpan; j++)
+                {
+                    // Sum up the column widths in the first row.
+                    if (i == 0) width += _cells[topRow][leftCol + j].Width;
+                    // Set merge info for each cell.
+                    // Note: The representatives of all cells are set to the (topRow, leftCol) cell.
+                    _cells[topRow + i][leftCol + j].MergeInfo
+                        = new CellMergeInfo(_cells[topRow][leftCol], rowSpan, colSpan, i, j);
+                    if (i != 0 || j != 0)
+                        _cells[topRow + i][leftCol + j].TransferBlocksTo(
+                            _cells[topRow + i][leftCol + j].MergeInfo.Representative);
+                }
             // Set cell width in the representative cell.
             _cells[topRow][leftCol].Width = width;
             _representativeList.Add(_cells[topRow][leftCol]);
@@ -242,55 +242,55 @@ namespace HooverUnlimited.DotNetRtfWriter
         public void SetInnerBorder(BorderStyle style, float width, ColorDescriptor color)
         {
             for (var i = 0; i < RowCount; i++)
-            for (var j = 0; j < ColCount; j++)
-            {
-                if (i == 0)
+                for (var j = 0; j < ColCount; j++)
                 {
-                    // The first row
-                    _cells[i][j].Borders[Direction.Bottom].Style = style;
-                    _cells[i][j].Borders[Direction.Bottom].Width = width;
-                    _cells[i][j].Borders[Direction.Bottom].Color = color;
+                    if (i == 0)
+                    {
+                        // The first row
+                        _cells[i][j].Borders[Direction.Bottom].Style = style;
+                        _cells[i][j].Borders[Direction.Bottom].Width = width;
+                        _cells[i][j].Borders[Direction.Bottom].Color = color;
+                    }
+                    else if (i == RowCount - 1)
+                    {
+                        // The last row
+                        _cells[i][j].Borders[Direction.Top].Style = style;
+                        _cells[i][j].Borders[Direction.Top].Width = width;
+                        _cells[i][j].Borders[Direction.Top].Color = color;
+                    }
+                    else
+                    {
+                        _cells[i][j].Borders[Direction.Top].Style = style;
+                        _cells[i][j].Borders[Direction.Top].Width = width;
+                        _cells[i][j].Borders[Direction.Top].Color = color;
+                        _cells[i][j].Borders[Direction.Bottom].Style = style;
+                        _cells[i][j].Borders[Direction.Bottom].Color = color;
+                        _cells[i][j].Borders[Direction.Bottom].Width = width;
+                    }
+                    if (j == 0)
+                    {
+                        // The first column
+                        _cells[i][j].Borders[Direction.Right].Style = style;
+                        _cells[i][j].Borders[Direction.Right].Width = width;
+                        _cells[i][j].Borders[Direction.Right].Color = color;
+                    }
+                    else if (j == ColCount - 1)
+                    {
+                        // The last column
+                        _cells[i][j].Borders[Direction.Left].Style = style;
+                        _cells[i][j].Borders[Direction.Left].Width = width;
+                        _cells[i][j].Borders[Direction.Left].Color = color;
+                    }
+                    else
+                    {
+                        _cells[i][j].Borders[Direction.Right].Style = style;
+                        _cells[i][j].Borders[Direction.Right].Width = width;
+                        _cells[i][j].Borders[Direction.Right].Color = color;
+                        _cells[i][j].Borders[Direction.Left].Style = style;
+                        _cells[i][j].Borders[Direction.Left].Width = width;
+                        _cells[i][j].Borders[Direction.Left].Color = color;
+                    }
                 }
-                else if (i == RowCount - 1)
-                {
-                    // The last row
-                    _cells[i][j].Borders[Direction.Top].Style = style;
-                    _cells[i][j].Borders[Direction.Top].Width = width;
-                    _cells[i][j].Borders[Direction.Top].Color = color;
-                }
-                else
-                {
-                    _cells[i][j].Borders[Direction.Top].Style = style;
-                    _cells[i][j].Borders[Direction.Top].Width = width;
-                    _cells[i][j].Borders[Direction.Top].Color = color;
-                    _cells[i][j].Borders[Direction.Bottom].Style = style;
-                    _cells[i][j].Borders[Direction.Bottom].Color = color;
-                    _cells[i][j].Borders[Direction.Bottom].Width = width;
-                }
-                if (j == 0)
-                {
-                    // The first column
-                    _cells[i][j].Borders[Direction.Right].Style = style;
-                    _cells[i][j].Borders[Direction.Right].Width = width;
-                    _cells[i][j].Borders[Direction.Right].Color = color;
-                }
-                else if (j == ColCount - 1)
-                {
-                    // The last column
-                    _cells[i][j].Borders[Direction.Left].Style = style;
-                    _cells[i][j].Borders[Direction.Left].Width = width;
-                    _cells[i][j].Borders[Direction.Left].Color = color;
-                }
-                else
-                {
-                    _cells[i][j].Borders[Direction.Right].Style = style;
-                    _cells[i][j].Borders[Direction.Right].Width = width;
-                    _cells[i][j].Borders[Direction.Right].Color = color;
-                    _cells[i][j].Borders[Direction.Left].Style = style;
-                    _cells[i][j].Borders[Direction.Left].Width = width;
-                    _cells[i][j].Borders[Direction.Left].Color = color;
-                }
-            }
         }
 
         /// <summary>
@@ -367,13 +367,13 @@ namespace HooverUnlimited.DotNetRtfWriter
             // set default char format for each cell.
             if (_defaultCharFormat != null)
                 for (var i = 0; i < RowCount; i++)
-                for (var j = 0; j < ColCount; j++)
-                {
-                    if (_cells[i][j].IsMerged
-                        && _cells[i][j].MergeInfo.Representative != _cells[i][j]) continue;
-                    if (_cells[i][j].DefaultCharFormat != null)
-                        _cells[i][j].DefaultCharFormat.CopyFrom(_defaultCharFormat);
-                }
+                    for (var j = 0; j < ColCount; j++)
+                    {
+                        if (_cells[i][j].IsMerged
+                            && _cells[i][j].MergeInfo.Representative != _cells[i][j]) continue;
+                        if (_cells[i][j].DefaultCharFormat != null)
+                            _cells[i][j].DefaultCharFormat.CopyFrom(_defaultCharFormat);
+                    }
 
             var topMargin = _margins[Direction.Top] - _fontSize;
 

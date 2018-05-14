@@ -103,7 +103,7 @@ namespace HooverUnlimited.DotNetRtfWriter
         public RtfTable AddTable(int rowCount, int colCount, float fontSize)
         {
             var horizontalWidth = RtfUtility.PaperWidthInPt(_paper, _orientation)
-                                    - Margins[Direction.Left] - Margins[Direction.Right]; 
+                                    - Margins[Direction.Left] - Margins[Direction.Right];
             return AddTable(rowCount, colCount, horizontalWidth, fontSize);
         }
 
@@ -142,7 +142,7 @@ namespace HooverUnlimited.DotNetRtfWriter
             // ---------------------------------------------------
             // Preliminary
             // ---------------------------------------------------
-            rtf.AppendLine(@"\deflang" + (int) _lcid + @"\plain\fs"
+            rtf.AppendLine(@"\deflang" + (int)_lcid + @"\plain\fs"
                            + RtfUtility.Pt2HalfPt(DefaultValue.FontSize) + @"\widowctrl\hyphauto\ftnbj");
             // page size
             rtf.AppendLine(@"\paperw" + RtfUtility.PaperWidthInTwip(_paper, _orientation)

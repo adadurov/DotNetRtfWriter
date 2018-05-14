@@ -33,7 +33,7 @@ namespace HooverUnlimited.DotNetRtfWriter
 
         public override string Render()
         {
-            return ControlWordPool[(int) _type];
+            return ControlWordPool[(int)_type];
         }
     }
 }

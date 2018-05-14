@@ -183,8 +183,8 @@ namespace HooverUnlimited.DotNetRtfWriter
         /// <param name="sty">Font style to be added.</param>
         public void AddStyle(FontStyleFlag sty)
         {
-            styleAdd |= (uint) sty;
-            styleRemove &= ~(uint) sty;
+            styleAdd |= (uint)sty;
+            styleRemove &= ~(uint)sty;
         }
 
         /// <summary>
@@ -194,8 +194,8 @@ namespace HooverUnlimited.DotNetRtfWriter
         /// <param name="sty">Font style to be removed.</param>
         public void RemoveStyle(FontStyleFlag sty)
         {
-            styleAdd &= ~(uint) sty;
-            styleRemove |= (uint) sty;
+            styleAdd &= ~(uint)sty;
+            styleRemove |= (uint)sty;
         }
 
         /// <summary>
@@ -205,13 +205,13 @@ namespace HooverUnlimited.DotNetRtfWriter
         /// <returns>True if the font style is in the set; false otherwise.</returns>
         public bool ContainsStyleAdd(FontStyleFlag sty)
         {
-            if ((styleAdd & (uint) sty) > 0) return true;
+            if ((styleAdd & (uint)sty) > 0) return true;
             return false;
         }
 
         public bool ContainsStyleRemove(FontStyleFlag sty)
         {
-            if ((styleRemove & (uint) sty) > 0) return true;
+            if ((styleRemove & (uint)sty) > 0) return true;
             return false;
         }
     }
@@ -289,10 +289,10 @@ namespace HooverUnlimited.DotNetRtfWriter
         internal Margins(float t, float r, float b, float l)
             : this()
         {
-            margins[(int) Direction.Top] = t;
-            margins[(int) Direction.Right] = r;
-            margins[(int) Direction.Bottom] = b;
-            margins[(int) Direction.Left] = l;
+            margins[(int)Direction.Top] = t;
+            margins[(int)Direction.Right] = r;
+            margins[(int)Direction.Bottom] = b;
+            margins[(int)Direction.Left] = l;
         }
 
         /// <summary>
@@ -321,10 +321,10 @@ namespace HooverUnlimited.DotNetRtfWriter
 
         public bool Equals(Margins margins)
         {
-            return margins.margins[(int) Direction.Bottom] == this.margins[(int) Direction.Bottom] &&
-                   margins.margins[(int) Direction.Left] == this.margins[(int) Direction.Left] &&
-                   margins.margins[(int) Direction.Right] == this.margins[(int) Direction.Right] &&
-                   margins.margins[(int) Direction.Top] == this.margins[(int) Direction.Top];
+            return margins.margins[(int)Direction.Bottom] == this.margins[(int)Direction.Bottom] &&
+                   margins.margins[(int)Direction.Left] == this.margins[(int)Direction.Left] &&
+                   margins.margins[(int)Direction.Right] == this.margins[(int)Direction.Right] &&
+                   margins.margins[(int)Direction.Top] == this.margins[(int)Direction.Top];
         }
     }
 
@@ -379,7 +379,7 @@ namespace HooverUnlimited.DotNetRtfWriter
         /// <returns>A hash code representing different sets of border attributes.</returns>
         public override int GetHashCode()
         {
-            return Width.GetHashCode() * 1000 + (int) Style;
+            return Width.GetHashCode() * 1000 + (int)Style;
         }
     }
 
