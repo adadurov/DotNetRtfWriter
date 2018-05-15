@@ -11,4 +11,5 @@ Attempted to contact original author via Sourceforge. Have forked here to allow 
 
 #### Version 2.0 released (29/3/2016)
 
-#### Forked by Alexey Adadurov to add support for .NET Standard 2.0
+#### Forked by Alexey Adadurov (15/3/2018)
+Add support for .NET Standard 2.0
