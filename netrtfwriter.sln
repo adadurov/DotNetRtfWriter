@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtfWriter", "RtfWriter\RtfW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debugging", "Debugging\Debugging.csproj", "{B4B65481-AEB3-454A-9FCD-036C435D4DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetRtfWriter.Std", "RtfWriter.NetCore\DotNetRtfWriter.Std.csproj", "{BDDBB232-1437-4339-B23B-3D453CB2CAE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetRtfWriter.Std", "DotNetRtfWriter.Std\DotNetRtfWriter.Std.csproj", "{BDDBB232-1437-4339-B23B-3D453CB2CAE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

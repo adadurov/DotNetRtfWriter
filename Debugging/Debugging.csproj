@@ -63,7 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RtfWriter.NetCore\DotNetRtfWriter.Std.csproj">
+    <ProjectReference Include="..\DotNetRtfWriter.Std\DotNetRtfWriter.Std.csproj">
       <Project>{bddbb232-1437-4339-b23b-3d453cb2cae0}</Project>
       <Name>DotNetRtfWriter.Std</Name>
     </ProjectReference>
