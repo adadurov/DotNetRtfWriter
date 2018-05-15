@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RtfWriter\RtfAbstract.cs" Link="RtfAbstract.cs" />
+    <Compile Include="..\RtfWriter\RtfBasics.cs" Link="RtfBasics.cs" />
+    <Compile Include="..\RtfWriter\RtfBlockList.cs" Link="RtfBlockList.cs" />
+    <Compile Include="..\RtfWriter\RtfCharFormat.cs" Link="RtfCharFormat.cs" />
+    <Compile Include="..\RtfWriter\RtfDocument.cs" Link="RtfDocument.cs" />
+    <Compile Include="..\RtfWriter\RtfFieldControlWord.cs" Link="RtfFieldControlWord.cs" />
+    <Compile Include="..\RtfWriter\RtfFootnote.cs" Link="RtfFootnote.cs" />
+    <Compile Include="..\RtfWriter\RtfHeaderFooter.cs" Link="RtfHeaderFooter.cs" />
+    <Compile Include="..\RtfWriter\RtfParagraph.cs" Link="RtfParagraph.cs" />
+    <Compile Include="..\RtfWriter\RtfSection.cs" Link="RtfSection.cs" />
+    <Compile Include="..\RtfWriter\RtfSectionFooter.cs" Link="RtfSectionFooter.cs" />
+    <Compile Include="..\RtfWriter\RtfTable.cs" Link="RtfTable.cs" />
+    <Compile Include="..\RtfWriter\RtfTableCell.cs" Link="RtfTableCell.cs" />
+    <Compile Include="..\RtfWriter\RtfUtility.cs" Link="RtfUtility.cs" />
+  </ItemGroup>
+
+</Project>

@@ -111,6 +111,7 @@ namespace HooverUnlimited.DotNetRtfWriter
             return block;
         }
 
+#if !NETSTANDARD2_0 && !NETSTANDARD1_0
         /// <summary>
         ///     Add an image to this container from a file with filetype provided.
         /// </summary>
@@ -166,16 +167,16 @@ namespace HooverUnlimited.DotNetRtfWriter
             AddBlock(block);
             return block;
         }
-
-        /// <summary>
-        ///     Add a table to this container.
-        /// </summary>
-        /// <param name="rowCount">Number of rows in the table.</param>
-        /// <param name="colCount">Number of columns in the table.</param>
-        /// <param name="horizontalWidth">Horizontabl width (in points) of the table.</param>
-        /// <param name="fontSize">The size of font used in this table. This is used to calculate margins.</param>
-        /// <returns>Table begin added.</returns>
-        public RtfTable AddTable(int rowCount, int colCount, float horizontalWidth, float fontSize)
+#endif
+    /// <summary>
+    ///     Add a table to this container.
+    /// </summary>
+    /// <param name="rowCount">Number of rows in the table.</param>
+    /// <param name="colCount">Number of columns in the table.</param>
+    /// <param name="horizontalWidth">Horizontabl width (in points) of the table.</param>
+    /// <param name="fontSize">The size of font used in this table. This is used to calculate margins.</param>
+    /// <returns>Table begin added.</returns>
+    public RtfTable AddTable(int rowCount, int colCount, float horizontalWidth, float fontSize)
         {
             if (!_allowTable) throw new Exception("Table is not allowed.");
             var block = new RtfTable(rowCount, colCount, horizontalWidth, fontSize);
