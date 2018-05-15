@@ -111,7 +111,6 @@ namespace HooverUnlimited.DotNetRtfWriter
             return block;
         }
 
-#if !NETSTANDARD2_0 && !NETSTANDARD1_0
         /// <summary>
         ///     Add an image to this container from a file with filetype provided.
         /// </summary>
@@ -167,7 +166,7 @@ namespace HooverUnlimited.DotNetRtfWriter
             AddBlock(block);
             return block;
         }
-#endif
+
     /// <summary>
     ///     Add a table to this container.
     /// </summary>

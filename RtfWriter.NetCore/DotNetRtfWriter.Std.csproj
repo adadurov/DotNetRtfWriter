@@ -13,12 +13,17 @@
     <Compile Include="..\RtfWriter\RtfFieldControlWord.cs" Link="RtfFieldControlWord.cs" />
     <Compile Include="..\RtfWriter\RtfFootnote.cs" Link="RtfFootnote.cs" />
     <Compile Include="..\RtfWriter\RtfHeaderFooter.cs" Link="RtfHeaderFooter.cs" />
+    <Compile Include="..\RtfWriter\RtfImage.cs" Link="RtfImage.cs" />
     <Compile Include="..\RtfWriter\RtfParagraph.cs" Link="RtfParagraph.cs" />
     <Compile Include="..\RtfWriter\RtfSection.cs" Link="RtfSection.cs" />
     <Compile Include="..\RtfWriter\RtfSectionFooter.cs" Link="RtfSectionFooter.cs" />
     <Compile Include="..\RtfWriter\RtfTable.cs" Link="RtfTable.cs" />
     <Compile Include="..\RtfWriter\RtfTableCell.cs" Link="RtfTableCell.cs" />
     <Compile Include="..\RtfWriter\RtfUtility.cs" Link="RtfUtility.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0-rc1" />
   </ItemGroup>
 
 </Project>
